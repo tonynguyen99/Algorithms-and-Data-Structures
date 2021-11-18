@@ -4,7 +4,9 @@ from IPython.display import clear_output
 def displayBoard(board):
   clear_output()
   print(board[1] + '|' + board[2] + '|' + board[3])
+  print('-----')
   print(board[4] + '|' + board[5] + '|' + board[6])
+  print('-----')
   print(board[7] + '|' + board[8] + '|' + board[9])
 
 def assignMarkers():
@@ -71,8 +73,17 @@ def game():
   print(f'Player 1 is: {player1Marker}')
   print(f'Player 2 is: {player2Marker}')
   
+  print('Below are the possible positions to place your marker')
+  print('1' + '|' + '2' + '|' + '3')
+  print('-----')
+  print('4' + '|' + '5' + '|' + '6')
+  print('-----')
+  print('7' + '|' + '8' + '|' + '9') 
+  
   takenPositions = []
   board = [' '] * 10
+  print('\n')
+  displayBoard(board)
   moves = 1
   currentPlayer = player1Marker
   while moves != 10:
