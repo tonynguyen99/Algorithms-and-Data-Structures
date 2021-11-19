@@ -80,28 +80,30 @@ def game():
   print('-----')
   print('7' + '|' + '8' + '|' + '9') 
   
-  takenPositions = []
-  board = [' '] * 10
+  takenPositions = [] # Initialize empty list of poitions taken
+  board = [' '] * 10 # Initialize the empty board list -- to be edited
+
   print('\n')
-  displayBoard(board)
-  moves = 1
-  currentPlayer = player1Marker
-  while moves != 10:
-    print(f'It\'s {currentPlayer}\'s turn')
+  
+  displayBoard(board) # Display the initial board
+  moves = 1 # Move counter, starts at 1
+  currentPlayer = player1Marker # Set the current player to Player 1
+  while moves != 10: # Max moves = 9 as there are 9 squares. Break loop if moves > 9
+    print(f'It\'s {currentPlayer}\'s turn') # Display whose turn it is
     
-    position = playerPosition2(takenPositions)
+    position = playerPosition2(takenPositions) # Grab input of where player wants to put their marker
     
-    placeMarker(board, currentPlayer, position)
+    placeMarker(board, currentPlayer, position) # Place the marker by updating the board, using their parker at desired position
     
-    displayBoard(board)
+    displayBoard(board) # Display the new board
     
-    if winOrTie(board, currentPlayer) == True:
+    if winOrTie(board, currentPlayer) == True: # Check if anyone has won, if so break the loop and display the winner
       print(f'{currentPlayer} wins!')
       break
     
-    moves += 1
-    currentPlayer = switchPlayer(currentPlayer)
+    moves += 1 # If no one has won, increase moves by 1, this goes after the winOrTie, so it someone wins on the 9th move, the while loop will break before it reaches moves = 10
+    currentPlayer = switchPlayer(currentPlayer) # Switch players
   else:
-    print("It's a tie!")
+    print("It's a tie!") # If moves > 9, it must be a tie
     
 game()
